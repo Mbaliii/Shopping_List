@@ -1,8 +1,12 @@
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React, { useState } from "react";
 import { Ionicons } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
+
+
 
 const ShoppingList = () => {
+    const shops = useSelector((state) => state.tasks)
     const data = [
         {
             id: 1,
@@ -30,7 +34,7 @@ const ShoppingList = () => {
     return (
         <View>
             {/* <Text>Shopping List</Text> */}
-            <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id.toString()}></FlatList>
+            <FlatList data={shops} renderItem={renderItem} keyExtractor={(item) => item.id.toString()}></FlatList>
         </View>
     )
 }

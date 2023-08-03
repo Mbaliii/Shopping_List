@@ -1,10 +1,22 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
-
-
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/taskSlice";
 
 
 const ShopHeader = () => {
+    const dispatch = useDispatch();
+    const onSubmitTask = () => {
+        if(shop.trim().length === 0) {
+            Alert.alert("Add a something");
+            setShop("");
+            return;
+        }
+        dispatch(addTask({
+            task: shop
+        }));
+    }
+
     const [shop, setShop] = useState("");
     return (
         <View>
@@ -20,7 +32,7 @@ const ShopHeader = () => {
                 <TouchableOpacity style={{
                     backgroundColor: "#add8e6", padding: 15, margin: 30, width: "80%",
                     borderRadius: 5, alignItems: "center"
-                }} onPress={() => { setShop(""); }}>
+                }} onPress={onSubmitTask}>
                     <Text style={{ color: "white" }}>Add</Text>
                 </TouchableOpacity>
             </View>

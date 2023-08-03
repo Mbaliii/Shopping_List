@@ -8,7 +8,7 @@ const ShopHeader = () => {
     const [shop, setShop] = useState("");
     return (
         <View>
-            <Text style={{ fontSize: 30, fontWeight: "bold", textAlign: "center", marginTop: 50 }}>
+            <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center", marginTop: 50 }}>
                 Shopping List
             </Text>
             <View style={{ justifyContent: "center", alignItems: "center" }}>

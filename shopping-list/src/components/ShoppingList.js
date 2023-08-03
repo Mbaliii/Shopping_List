@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React, { useState } from "react";
-
+import { Ionicons } from '@expo/vector-icons';
 
 const ShoppingList = () => {
     const data = [
@@ -18,7 +18,11 @@ const ShoppingList = () => {
         return (
             <View style={styles.item}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.delete}>Delete</Text>
+                <TouchableOpacity style={styles.deleteButton} onPress={() => {
+                    deleteItem(item.id)
+                }}>
+                    <Ionicons name="trash-bin" size={24} color="black" />
+                </TouchableOpacity>
             </View>
         );
     };
@@ -35,13 +39,16 @@ export default ShoppingList;
 
 const styles = StyleSheet.create({
     item: {
-        backgroundColor: "#f9c2ff",
+        backgroundColor: "#add8e6",
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     title: {
-        fontSize: 32,
+        fontSize: 18,
     },
     delete: {
         fontSize: 24,
